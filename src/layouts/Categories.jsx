@@ -11,7 +11,6 @@ export default function Categories() {
                 />
                 <Menu.Item
                     name='messages'
-
                 />
                 <Menu.Item
                     name='friends'
