@@ -1,7 +1,9 @@
 import React from 'react'
 
 export default function CartDetail() {
-  return (
-    <div>Sepet Detayı</div>
-  )
+    return (
+        <div>
+            Sepet detayı
+        </div>
+    )
 }
