@@ -5,6 +5,8 @@ import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import { NavLink, withRouter } from 'react-router-dom'
+
 
 export default function Navi() {
   const { cartItems } = useSelector(state => state.cart)
@@ -24,8 +26,8 @@ export default function Navi() {
     <div>
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item name="home" />
-          <Menu.Item name="messages" />
+          <Menu.Item name="home" as={NavLink} exact to="/"/>
+          <Menu.Item name="cart" as={NavLink} exact to="/cart"/>
 
           <Menu.Menu position="right">
             { cartItems.length > 0 && <CartSummary/>}

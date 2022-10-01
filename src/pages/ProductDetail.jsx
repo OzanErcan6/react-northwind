@@ -12,6 +12,7 @@ export default function ProductDetail() {
   useEffect(() => {
     let productService = new ProductService()
     productService.getByProductName(name).then(result => setProduct(result.data.data));
+    console.log(product.unitsInStock)
   },[])
 
   return (
@@ -27,16 +28,16 @@ export default function ProductDetail() {
             <Card.Header>{product.productName}</Card.Header>
             <Card.Meta>{product.unitPrice}</Card.Meta>
             <Card.Description>
-              Steve wants to add you to the group <strong>best friends</strong>
+              asdasdad
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <div className='ui two buttons'>
               <Button basic color='green'>
-                Approve
+                Sepete Ekle
               </Button>
               <Button basic color='red'>
-                Decline
+                Sepetten Çıkart
               </Button>
             </div>
           </Card.Content>

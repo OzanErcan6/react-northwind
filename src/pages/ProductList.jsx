@@ -5,6 +5,7 @@ import { Button, Icon, Menu, Table } from "semantic-ui-react";
 import ProductService from "../services/ProductService";
 import {addToCart} from "../store/actions/cartActions";
 //import { toast } from 'react-toastify';
+import { Grid, Input, Pagination, Segment } from 'semantic-ui-react'
 
 
 export default function ProductList() {
@@ -13,10 +14,19 @@ export default function ProductList() {
 
   const [products, setProducts] = useState([]);
 
+  const [activePage, setActivePage] = useState(1);
+
+  const handlePaginationChange = (e, { activePage }) => setActivePage(activePage)
+
+  const calculatePageSize = () => {
+    let productService = new ProductService()
+    //productService.getProducts().then(result=>setProducts(result.data.data))
+  }
+
   useEffect(()=>{
     let productService = new ProductService()
-    productService.getProducts().then(result=>setProducts(result.data.data))
-  },[])
+    productService.getProductsByPage(activePage,10).then(result=>setProducts(result.data.data))
+  },[activePage])
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
@@ -40,7 +50,7 @@ export default function ProductList() {
           {products.map((product) => (
             <Table.Row key={product.id}>
               <Table.Cell><Link to={`/products/${product.productName}`}>{product.productName}</Link></Table.Cell>
-              <Table.Cell>{product.unitPrice}</Table.Cell>
+              <Table.Cell>{Math.round(product.unitPrice)}</Table.Cell>
               <Table.Cell>{product.unitsInStock}</Table.Cell>
               <Table.Cell>{product.quantityPerUnit}</Table.Cell>
               <Table.Cell>{product.category.categoryName}</Table.Cell>
@@ -49,24 +59,15 @@ export default function ProductList() {
           ))}
         </Table.Body>
 
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan="3">
-              <Menu floated="right" pagination>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron left" />
-                </Menu.Item>
-                <Menu.Item as="a">1</Menu.Item>
-                <Menu.Item as="a">2</Menu.Item>
-                <Menu.Item as="a">3</Menu.Item>
-                <Menu.Item as="a">4</Menu.Item>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron right" />
-                </Menu.Item>
-              </Menu>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
+        <Grid >
+          <Grid.Column>
+            <Pagination
+                activePage={activePage}
+                onPageChange={handlePaginationChange}
+                totalPages={8}
+            />
+          </Grid.Column>
+        </Grid>
       </Table>
     </div>
   );
