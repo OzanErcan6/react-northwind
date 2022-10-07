@@ -13,4 +13,8 @@ export default class ProductService{
     getCategories(){
         return axios.get("http://localhost:8083/api/products/getCategories")
     }
+
+    getByCategoryId(categoryId){
+        return axios.get("http://localhost:8083/api/products/getByCategoryId",{ params: { categoryId: categoryId } })
+    }
 }
