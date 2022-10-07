@@ -12,12 +12,11 @@ export default function Dashboard() {
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={4}>
-            <Categories />
-          </Grid.Column>
+
           <Grid.Column width={12}>
             <Route exact path="/" component={ProductList} />
             <Route exact path="/products" component={ProductList} />
+            <Route exact path="/categories" component={Categories} />
             <Route path="/products/:name" component={ProductDetail} />
             <Route path="/cart" component={CartDetail} />
             <Route path="/product/add" component={ProductAdd} />

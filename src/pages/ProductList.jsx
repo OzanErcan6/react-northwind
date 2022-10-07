@@ -1,11 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Icon, Menu, Table } from "semantic-ui-react";
+import { Button, Table } from "semantic-ui-react";
 import ProductService from "../services/ProductService";
 import {addToCart} from "../store/actions/cartActions";
 //import { toast } from 'react-toastify';
-import { Grid, Input, Pagination, Segment } from 'semantic-ui-react'
+import { Grid, Pagination } from 'semantic-ui-react'
 
 
 export default function ProductList() {
@@ -18,10 +18,6 @@ export default function ProductList() {
 
   const handlePaginationChange = (e, { activePage }) => setActivePage(activePage)
 
-  const calculatePageSize = () => {
-    let productService = new ProductService()
-    //productService.getProducts().then(result=>setProducts(result.data.data))
-  }
 
   useEffect(()=>{
     let productService = new ProductService()

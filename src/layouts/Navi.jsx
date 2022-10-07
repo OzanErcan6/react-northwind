@@ -5,7 +5,7 @@ import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 export default function Navi() {
@@ -28,7 +28,7 @@ export default function Navi() {
         <Container>
           <Menu.Item name="home" as={NavLink} exact to="/"/>
           <Menu.Item name="cart" as={NavLink} exact to="/cart"/>
-
+          <Menu.Item name="categories" as={NavLink} exact to="/categories"/>
           <Menu.Menu position="right">
             { cartItems.length > 0 && <CartSummary/>}
             {isAuthenticated?<SignedIn signOut={handleSignOut} bisey="1"/>

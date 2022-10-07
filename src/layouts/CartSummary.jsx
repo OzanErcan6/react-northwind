@@ -13,8 +13,8 @@ export default function CartSummary() {
           {
             cartItems.map((cartItem) => (
               <Dropdown.Item key={cartItem.product.id}>
-                {cartItem.product.productName}
-                <Label>{cartItem.quantity}</Label>
+                {cartItem.product.productName} {" "}
+                <Label floated="right">{cartItem.quantity}</Label>
               </Dropdown.Item>
             ))
           }
