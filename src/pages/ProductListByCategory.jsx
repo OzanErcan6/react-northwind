@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { Button, Table } from "semantic-ui-react";
 import ProductService from "../services/ProductService";
 import {addToCart} from "../store/actions/cartActions";
-//import { toast } from 'react-toastify';
-//import { Grid, Pagination } from 'semantic-ui-react'
 
 
 export default function ProductListByCategory(props) {
@@ -21,7 +19,6 @@ export default function ProductListByCategory(props) {
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
-        //toast.success(`${product.productName} sepete eklendi!`)
     }
 
     return (
